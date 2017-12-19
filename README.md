@@ -1,24 +1,73 @@
-# README
+  ## Models
+- user
+  - teacher
+  - admin
+  - parent
+  - child
+- school
+- class
+- attendance: student_id school_id date time
+- teacher codes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
+- API
+  - JWT to authenticate
+  - has to be authenticated as a teacher to take assistance and create class/parents/child
+  - can create schools
+  - can create classes
+  - can create list of parents
+  - can create list of children
+  - can take attendance on a children
 
-Things you may want to cover:
+- FROM
+  - BCrypt can create an account as a teacher with code
+  - can login as teacher
+  - can create schools/classes
+  - classes can create students
+  - can take assistance from a list of class/students
 
-* Ruby version
+## TODO
+- create users
+- authenticate users via API JWT
+- create reference teacher/children parent/children
 
-* System dependencies
+## Rails set up
+New rails project no test:
+`rails new <name> -T`
 
-* Configuration
+## Gems
+### rspec
+- gem `gem 'rspec-rails', '~> 3.7', '>= 3.7.1'`
+- `rails generate rspec:install`
 
-* Database creation
+## factory bot
+- `gem 'factory_bot_rails'`
+- spec/rails_helper `config.include FactoryBot::Syntax::Methods`
+- spec/factory/model.rb
+- [example](https://github.com/rweng/pry-rails)
+- test in `rails c -e test`
 
-* Database initialization
+## capybara
+- `gem 'capybara'`
+- on rspec helper `require 'capybara/rails'`
+- mkdir spec/features
+- include in rails helper if using Devise
+    ```
+    include Warden::Test::Helpers
+    Warden.test_mode!
+    ```
+### bootstrap:
+- gem `'bootstrap-sass', '~> 3.3.7'` (make sure rails-sass is present)
+- updates application.scss and include
+  - `@import "bootstrap-sprockets";`
+  - `@import "bootstrap";`
+- udate application.js and import bt
+  - `//= require bootstrap-sprockets`
+- [Layout examples](http://www.layoutit.com/build)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### bycript
+- user model has password digest
+- user controller new create strong params
+- user model has_secured_password
+- signin/ signout : create session[:user_id]
+- current_user in app controller as helper_method :current_user
