@@ -33,9 +33,22 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# BCrypt
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+
+# Token
+gem 'jwt'
+
+# Enable Cors
+gem 'rack-cors'
+
+# Helper btw the controller and the model
+gem 'simple_command'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
 end
 
 group :development do
