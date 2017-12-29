@@ -4,6 +4,9 @@ class CreateAttendances < ActiveRecord::Migration[5.1]
       t.datetime :datetime
       t.boolean :status
 
+      t.integer :child_id
+      t.integer :teacher_id
+
       t.timestamps
     end
   end

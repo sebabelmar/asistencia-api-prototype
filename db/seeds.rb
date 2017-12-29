@@ -7,4 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-10.times {|i| Attendance.create(status: true, datetime: DateTime.current + i.day)}
+school = School.create(
+  name: 'School_1',
+  address: '123 Somewhere St.'
+)
+
+teacher = User.create( name: "Teacher", email: "t@t.com", password: "123", password_confirmation: "123", school_id: school.id, type: 'Teacher' )
+
+10.times do |i|
+  child = Child.create(
+    name: "Name",
+    email: "c_#{i}@c.com",
+    password: "123",
+    password_confirmation: "123",
+    school_id: school.id
+  )
+
+  Attendance.create(
+    datetime: DateTime.current,
+    status: true,
+    child_id: child.id,
+    teacher_id: teacher.id
+  )
+end

@@ -3,7 +3,19 @@ class AttendancesController < ApplicationController
 
   # GET /attendances
   def index
-    @attendances = Attendance.all
+    # Can be comming from children, teacher, school
+    find_key = ''
+    id = ''
+
+    if params[:teachers_id]
+      find_key = 'teacher_id'
+      id = params[:teachers_id]
+    elsif params[:children_id]
+      find_key = 'child_id'
+      id = params[:children_id]
+    end
+
+    @attendances = Attendance.where(find_key => id)
 
     render json: @attendances
   end

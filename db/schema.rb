@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171219234327) do
+ActiveRecord::Schema.define(version: 20171220205553) do
 
   create_table "attendances", force: :cascade do |t|
     t.datetime "datetime"
     t.boolean "status"
+    t.integer "child_id"
+    t.integer "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,8 +32,11 @@ ActiveRecord::Schema.define(version: 20171219234327) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.integer "school_id"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_users_on_school_id"
   end
 
 end
