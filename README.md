@@ -1,4 +1,9 @@
-  ## Models
+# ASISTENCIA API
+Prototype API to implement authentication using JWT manually before using library.
+Check if Single Table Inheritance works well with the schema in mind.
+Using full Rails on this example.
+
+## Models
 - user
   - teacher
   - admin
@@ -19,7 +24,7 @@
   - can create list of children
   - can take attendance on a children
 
-- FROM
+- FROM POSTMAN
   - BCrypt can create an account as a teacher with code
   - can login as teacher
   - can create schools/classes
@@ -27,8 +32,8 @@
   - can take assistance from a list of class/students
 
 ## TODO
-- create users
-- authenticate users via API JWT
+- X create users
+- X authenticate users via API JWT
 - create reference teacher/children parent/children
 
 ## Rails set up
@@ -47,27 +52,6 @@ New rails project no test:
 - [example](https://github.com/rweng/pry-rails)
 - test in `rails c -e test`
 
-## capybara
-- `gem 'capybara'`
-- on rspec helper `require 'capybara/rails'`
-- mkdir spec/features
-- include in rails helper if using Devise
-    ```
-    include Warden::Test::Helpers
-    Warden.test_mode!
-    ```
-### bootstrap:
-- gem `'bootstrap-sass', '~> 3.3.7'` (make sure rails-sass is present)
-- updates application.scss and include
-  - `@import "bootstrap-sprockets";`
-  - `@import "bootstrap";`
-- udate application.js and import bt
-  - `//= require bootstrap-sprockets`
-- [Layout examples](http://www.layoutit.com/build)
 
 ### bycript
-- user model has password digest
-- user controller new create strong params
-- user model has_secured_password
-- signin/ signout : create session[:user_id]
-- current_user in app controller as helper_method :current_user
+- user model has password_digest
