@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
 
   # GET /attendances
   def index
-    # Can be comming from children, teacher, school
+    # Request coming from children, teacher, school
     find_key = ''
     id = ''
 
